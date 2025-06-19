@@ -24,12 +24,16 @@ const CardLayanan = ({dataShipment, dataTransporter, dataVehicle}) => {
   const [idTransporter, setIdTransporter] = useState();
     const [asal, setAsal] = useState();
      const [idEdit, setIdEdit] = useState();
+     const [idHapus, setIdHapus] = useState();
       const [tujuan, setTujuan] = useState();
        const [vehicle, setVehicle] = useState();
+         const [smShow, setSmShow] = useState(false);
   const target = useRef(null);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+   const [show2, setShow2] = useState(false);
    const handleClose = () => setShow(false);
+      const handleClose2 = () => setShow2(false);
   const handleEdit = (data) => {
     setShow(true)
     setIdEdit(data?.id_shipment)
@@ -69,6 +73,33 @@ const handleEditData = ( e) => {
         );
       });
   };
+  const handleOpenHapus = (id) => {
+    setSmShow(true)
+    setIdHapus(id)
+  }
+
+  const handleHapus = () => {
+   
+    const headers = {
+      "Content-Type": "application/x-www-form-urlencoded",
+    };
+    axios
+      .post(
+        `${API}/shipments/delete/${idHapus}`
+      )
+      .then(function (response) {
+     
+        alert("Hapus Data Berhasil");
+         window.location.reload();
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert(
+          "Hapus Data Gagal, Nama Barang Pastikan berbeda, untuk harga beli, harga jual dan stok hanya dapat di isi angka"
+        );
+      });
+  };
+ 
  
   return (
     <>
@@ -106,7 +137,9 @@ const handleEditData = ( e) => {
                            <button type="button" class="btn btn-warning"
                            onClick={() => handleEdit(data)}>Edit</button>
                          {" "}
-                               <button type="button" class="btn btn-danger">Hapus</button>
+                               <button type="button" class="btn btn-danger" 
+                               onClick={() => handleOpenHapus(data.id_shipment)}
+                               >Hapus</button>
                           </td>
         </tr>
         ))}
@@ -186,6 +219,55 @@ const handleEditData = ( e) => {
               </Button>
             </Modal.Footer>
           </Modal>
+
+           {/* <Modal show={show2} onHide={handleClose2}>
+           
+            <Modal.Body>
+              <div className="container">
+                        <div className="row">
+                          <div className="col">
+                                Apakah anda yakin untuk menghapus data ?
+                          </div>
+                         
+                        </div>
+                       
+                       
+                      </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose2}>
+                cancel
+              </Button>
+              <Button variant="primary" 
+               onClick={(e) => handleEditData(e)}
+              >
+                Tambah
+              </Button>
+            </Modal.Footer>
+          </Modal> */}
+
+         <Modal
+        size="sm"
+        show={smShow}
+        onHide={() => setSmShow(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
+        
+        <Modal.Body>
+           Apakah anda yakin untuk menghapus data ?
+        </Modal.Body>
+         <Modal.Footer>
+              <Button variant="primary"  onClick={() => setSmShow(false)}>
+                cancel
+              </Button>
+              <Button variant="danger" 
+              onClick={() => handleHapus()}
+             
+              >
+                Hapus
+              </Button>
+            </Modal.Footer>
+      </Modal>
      
           </>
   );
