@@ -15,6 +15,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 import axios from "axios";
+import moment from "moment";
 
 // import Profil from "assets/images/usernav.png";
 // import Logout from "assets/images/logout.svg";
@@ -130,7 +131,8 @@ const handleEditData = ( e) => {
            <td>{data.jenis_kendaraan}</td>
            <td>{data.plat}</td>
             <td>{data.status}</td>
-            <td>{data.create_time}</td>
+            <td> {moment(data.create_time).format('MMMM Do YYYY, h:mm:ss a')}</td>
+           
             <td>
                             
                         

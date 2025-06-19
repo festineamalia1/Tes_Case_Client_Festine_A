@@ -24,7 +24,7 @@ const NavBar = (props) => {
 <nav class="navbar navbar-expand-lg bg-white border-bottom">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center">
-         <div class="logo mb-2 d-flex align-items-center justify-content-center"  onClick={() => navigate(`/home`)}> 
+         <div class="logo mb-2 d-flex align-items-center justify-content-center"  onClick={() => navigate(`/shipment`)}> 
           <img src={require(`../assets/images/free_shipping.png`)} alt="Logo" className=" shipping-logo w-60 px-2"/> 
           SHIPMENT
           </div>
