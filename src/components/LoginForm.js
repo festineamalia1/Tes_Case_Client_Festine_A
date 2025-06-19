@@ -79,7 +79,7 @@ const LoginForm = (props) => {
             </div>
            
             <button type="submit" className="btn btn-danger w-100"
-            onClick={() => {navigate('/home')}}
+            onClick={() => {navigate('/shipment')}}
             >Login</button>
           
           </form>
