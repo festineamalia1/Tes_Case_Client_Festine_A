@@ -1,9 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import NavBar from "../components/NavBar";
-import CardLayanan from "../components/CardLayanan"
 import TableShipment from "../components/TableShipment"
-import ProfileSaldo from "../components/ProfileSaldo"
-import ModalEdit from "../components/ModalEdit"
 import {
   Container,
   Row,
@@ -123,6 +120,26 @@ const handleTambah = (e) => {
       });
   };
 
+  const handleCari = (e) => {
+    e.preventDefault();
+    const headers = {
+      "Content-Type": "application/x-www-form-urlencoded",
+    };
+    axios
+      .get(
+        `${API}/shipments/search/${idTransporter}`)
+      .then(function (response) {
+       
+      setDataShipment(response)
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert(
+          "tambah Data Gagal, Nama Barang Pastikan berbeda, untuk harga beli, harga jual dan stok hanya dapat di isi angka"
+        );
+      });
+  };
+
   const handleTambahStatus = (idNew) => {
     
     const headers = {
@@ -170,16 +187,29 @@ const handleTambah = (e) => {
   <div class="card-body">
     <div className="row">
       <div className="col-md-10">
-        <div className="input-group">
+        {/* <div className="input-group">
          <span className="input-group-text bg-white">
           <i class="bi bi-search"></i>
          </span>
          <input type="text" className="form-control border-start-0" placeholder="Cari Transporter"  />
-       </div>
+       </div> */}
+
+        <select class="form-select mt-2" id="floatingSelectDisabled" aria-label="Floating label disabled select example" 
+                             value={idTransporter}
+                             onChange={(e) => setIdTransporter(e.target.value)}>
+                                <option selected >Cari Nama Transporter</option>
+                                   {dataTransporter?.data?.data &&
+                          dataTransporter?.data?.data?.map((data, i) => (
+                                <option value={data.id_transporter}>{data.nama}</option>
+                                ))}
+                              </select>
       </div>
       <div className="col d-flex  justify-content-end">
         <div className="col">
-          <button type="button" class="btn btn-primary">Cari</button>
+          <button type="button" class="btn btn-primary"
+          onClick={(e) => {handleCari(e)}}
+          
+          >Cari</button>
         </div>
          <div className="col">
       <button type="button" class="btn btn-success"

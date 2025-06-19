@@ -1,7 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
 import NavBar from "../components/NavBar";
-import CardLayanan from "../components/CardLayanan"
-import ProfileSaldo from "../components/ProfileSaldo"
 import {
   Container,
   Row,

@@ -33,29 +33,9 @@ const LandingPage = (props) => {
           <img src={require(`../assets/images/free_shipping.png`)} alt="Logo" className="shipping-logo w-80 px-2"/> 
           SHIPMENT
           </div>
-
-          {
-            page == 'regis' ? 
-            <>
-              <RegisterForm />
-              
-                 <div class="login-text">
-              Sudah punya akun? Login
-              <a className="login-link" onClick={() => {setPage('login')}}> di sini</a>
-            </div>
-              
-           
-             
-              </>
-              : 
-              <>
+\
                <LoginForm/>
-                <div class="login-text">
-              Belum Punya Akun ? registrasi <a className="login-link" onClick={() => {setPage('regis')}} >di sini</a>
-            </div>
-              </>
-             
-          }
+              
 
 
    

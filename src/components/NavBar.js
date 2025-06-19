@@ -33,20 +33,10 @@ const NavBar = (props) => {
 
       <div class="ms-auto">
         <ul class="navbar-nav flex-row gap-3">
-          <li className="nav-item nav-link-nonactive">
-            <div class="nav-link "
-            onClick={() => handleMenu(`shipment`)}
-            >Top Up</div>
-          </li>
-          <li className="nav-item nav-link-nonactive">
-            <div class="nav-link "
-            onClick={() => handleMenu(`transaksi`)}
-            >Transaction</div>
-            {/* <a class="nav-link text-dark" href={`${BASE_URL}/transaction`}>Transaction</a> */}
-          </li>
+        
           <li className="nav-item nav-link-nonactive">
             <div class="nav-link " 
-            onClick={() => handleMenu(`akun-page`)}>Akun</div>
+            onClick={() => handleMenu(`/`)}>Logout</div>
           </li>
         </ul>
       </div>

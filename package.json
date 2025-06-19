@@ -1,6 +1,5 @@
 {
-     "homepage": "https://festineamalia1.github.io/SIMS_PPOB_Festine_Amalia_Putri",
-     "name": "project_pribadi",
+    "name": "project_pribadi",
      "version": "0.1.0",
      "private": true,
      "dependencies": {
