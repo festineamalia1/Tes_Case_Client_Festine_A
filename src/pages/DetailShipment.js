@@ -19,14 +19,11 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import { StyledEngineProvider } from '@mui/material/styles';
+import moment from "moment";
 
 // import Barang from "../assets/images/barang1.jpg";
 
-  const steps = [
-  'Select master blaster campaign settings',
-  'Create an ad group',
-  'Create an ad',
-];
+
 
 export default function DetailShipment() {
   const param = useParams()
@@ -126,7 +123,8 @@ const TOKEN = localStorage.getItem('token')
         Start at
        </div>
        <div className="row fw-light">
-        {detailShipment?.data?.data?.[0]?.create_time}
+
+        {moment(detailShipment?.data?.data?.[0]?.create_time).format('MMMM Do YYYY, h:mm:ss a')}
        </div>
       </div>
     </div>
@@ -138,8 +136,8 @@ const TOKEN = localStorage.getItem('token')
         </div>
                <div className="row mt-5">
                 
-          <div className="col d-flex align-items-center justify-content-center">
-            <div className="row">
+          <div className="col ">
+            <div className="row d-flex align-items-center justify-content-center">
       <img src={require(`../assets/images/truck.png`)} alt="Avatar"  className={`icon-truck ${
         detailStatus?.data?.data[detailStatus?.data?.data?.length - 1]?.status !== 'on going'?
         `d-none`
@@ -148,7 +146,7 @@ const TOKEN = localStorage.getItem('token')
       </div>
       {
          detailStatus?.data?.data[detailStatus?.data?.data?.length - 1]?.status == 'on going'?
-           <div className="row fw-semibold">
+           <div className="row fw-semibold d-flex align-items-center justify-content-center">
          
         {detailStatus?.data?.data[detailStatus?.data?.data?.length - 1]?.status}
      
@@ -177,7 +175,7 @@ const TOKEN = localStorage.getItem('token')
       }
      </div>
      <div className="col d-flex align-items-center justify-content-center">
-         <div className="row">
+         <div className="row d-flex align-items-center justify-content-center">
       <img src={require(`../assets/images/truck.png`)} alt="Avatar"  className={`icon-truck ${
         detailStatus?.data?.data[detailStatus?.data?.data?.length - 1]?.status !== 'complete'?
         `d-none`
@@ -186,7 +184,7 @@ const TOKEN = localStorage.getItem('token')
       </div> 
        {
          detailStatus?.data?.data[detailStatus?.data?.data?.length - 1]?.status == 'complete'?
-           <div className="row fw-semibold">
+           <div className="row fw-semibold d-flex align-items-center justify-content-center">
          
         {detailStatus?.data?.data[detailStatus?.data?.data?.length - 1]?.status}
      

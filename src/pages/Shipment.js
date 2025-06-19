@@ -16,6 +16,7 @@ import {
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import { API } from "config/api";
 import axios from "axios";
+import moment from "moment";
 
 // import Barang from "../assets/images/barang1.jpg";
 
@@ -102,7 +103,7 @@ const handleTambah = (e) => {
       loc_tujuan: tujuan,
       id_transporter: idTransporter,
       id_vehicle: vehicle,
-      create_time: "2025-06-17 19:12:50",
+      create_time: moment(),
         id_user : 1
         }
       )
@@ -151,7 +152,7 @@ const handleTambah = (e) => {
         {
          id_shipment: idNew,
       update_time:"2025-06-17 19:12:50",
-      status: "ongoing",
+      status: "on going",
         id_user : 1
         }
       )
